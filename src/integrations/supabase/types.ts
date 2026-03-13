@@ -70,6 +70,63 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_info: {
+        Row: {
+          id: string
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          admin_reply: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          admin_reply?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Update: {
+          admin_reply?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           id: string
@@ -274,6 +331,7 @@ export type Database = {
           id: string
           product_id: number
           rating: number
+          status: string
           title: string | null
           user_id: string
         }
@@ -283,6 +341,7 @@ export type Database = {
           id?: string
           product_id: number
           rating: number
+          status?: string
           title?: string | null
           user_id: string
         }
@@ -292,6 +351,7 @@ export type Database = {
           id?: string
           product_id?: number
           rating?: number
+          status?: string
           title?: string | null
           user_id?: string
         }
@@ -304,6 +364,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      team_members: {
+        Row: {
+          bio: string | null
+          created_at: string
+          email: string | null
+          id: string
+          image_url: string | null
+          is_founder: boolean
+          name: string
+          role: string
+          sort_order: number
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          image_url?: string | null
+          is_founder?: boolean
+          name: string
+          role?: string
+          sort_order?: number
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          image_url?: string | null
+          is_founder?: boolean
+          name?: string
+          role?: string
+          sort_order?: number
+        }
+        Relationships: []
       }
       user_roles: {
         Row: {
