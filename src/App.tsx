@@ -45,6 +45,10 @@ const App = () => (
               <Route path="/admin/products" element={<AdminLayout><AdminProducts /></AdminLayout>} />
               <Route path="/admin/orders" element={<AdminLayout><AdminOrders /></AdminLayout>} />
               <Route path="/admin/users" element={<AdminLayout><AdminUsers /></AdminLayout>} />
+              <Route path="/admin/reviews" element={<AdminLayout><AdminReviews /></AdminLayout>} />
+              <Route path="/admin/messages" element={<AdminLayout><AdminMessages /></AdminLayout>} />
+              <Route path="/admin/contact-info" element={<AdminLayout><AdminContactInfo /></AdminLayout>} />
+              <Route path="/admin/team" element={<AdminLayout><AdminTeam /></AdminLayout>} />
 
               {/* Store routes */}
               <Route

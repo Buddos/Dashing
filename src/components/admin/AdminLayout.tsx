@@ -23,6 +23,10 @@ const navItems = [
   { label: "Products", path: "/admin/products", icon: Package },
   { label: "Orders", path: "/admin/orders", icon: ShoppingCart },
   { label: "Users", path: "/admin/users", icon: Users },
+  { label: "Reviews", path: "/admin/reviews", icon: Star },
+  { label: "Messages", path: "/admin/messages", icon: MessageSquare },
+  { label: "Contact Info", path: "/admin/contact-info", icon: Phone },
+  { label: "Team", path: "/admin/team", icon: UserCog },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
