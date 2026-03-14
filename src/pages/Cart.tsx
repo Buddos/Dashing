@@ -41,7 +41,7 @@ const Cart = () => {
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="font-body text-sm font-medium text-foreground">{item.name}</h3>
-                    <p className="font-body text-sm text-accent font-semibold mt-1">${(item.salePrice ?? item.price).toFixed(2)}</p>
+                    <p className="font-body text-sm text-accent font-semibold mt-1">KES {(item.salePrice ?? item.price).toFixed(2)}</p>
                   </div>
                   <div className="flex items-center justify-between mt-2">
                     <div className="flex items-center border border-border rounded-sm">
@@ -69,19 +69,19 @@ const Cart = () => {
               <div className="space-y-3 font-body text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="text-foreground font-medium">${subtotal.toFixed(2)}</span>
+                  <span className="text-foreground font-medium">KES {subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Shipping</span>
-                  <span className="text-foreground font-medium">{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                  <span className="text-foreground font-medium">{shipping === 0 ? "Free" : `KES ${shipping.toFixed(2)}`}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Tax (est.)</span>
-                  <span className="text-foreground font-medium">${tax.toFixed(2)}</span>
+                  <span className="text-foreground font-medium">KES {tax.toFixed(2)}</span>
                 </div>
                 <div className="border-t border-border pt-3 flex justify-between">
                   <span className="text-foreground font-semibold">Total</span>
-                  <span className="text-foreground font-bold text-lg">${total.toFixed(2)}</span>
+                  <span className="text-foreground font-bold text-lg">KES {total.toFixed(2)}</span>
                 </div>
               </div>
               {shipping > 0 && (

@@ -73,10 +73,10 @@ const ProductDetail = () => {
 
             {/* Price */}
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="font-display text-3xl font-bold text-foreground">${effectivePrice}</span>
+              <span className="font-display text-3xl font-bold text-foreground">KES {effectivePrice}</span>
               {product.salePrice && (
                 <>
-                  <span className="font-body text-lg text-muted-foreground line-through">${product.price}</span>
+                  <span className="font-body text-lg text-muted-foreground line-through">KES {product.price}</span>
                   <span className="font-body text-sm font-semibold text-accent">-{discount}%</span>
                 </>
               )}
@@ -99,7 +99,7 @@ const ProductDetail = () => {
                 onClick={() => addToCart(product, quantity)}
                 className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 font-body font-semibold uppercase tracking-wide h-12"
               >
-                Add to Cart — ${(effectivePrice * quantity).toFixed(2)}
+                Add to Cart — KES {(effectivePrice * quantity).toFixed(2)}
               </Button>
               <button className="p-3 border border-border rounded-sm text-foreground hover:text-accent hover:border-accent transition-colors">
                 <Heart size={20} />
@@ -189,7 +189,7 @@ const ProductDetail = () => {
                     <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
                   <h3 className="font-body text-sm font-medium text-foreground group-hover:text-accent transition-colors">{p.name}</h3>
-                  <span className="font-body text-sm font-semibold text-foreground">${p.salePrice ?? p.price}</span>
+                  <span className="font-body text-sm font-semibold text-foreground">KES {p.salePrice ?? p.price}</span>
                 </Link>
               ))}
             </div>

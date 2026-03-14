@@ -142,11 +142,11 @@ const Index = () => {
                 <div className="flex items-center gap-2">
                   {product.salePrice ? (
                     <>
-                      <span className="font-body text-sm font-semibold text-accent">${product.salePrice}</span>
-                      <span className="font-body text-xs text-muted-foreground line-through">${product.price}</span>
+                      <span className="font-body text-sm font-semibold text-accent">KES {product.salePrice}</span>
+                      <span className="font-body text-xs text-muted-foreground line-through">KES {product.price}</span>
                     </>
                   ) : (
-                    <span className="font-body text-sm font-semibold text-foreground">${product.price}</span>
+                    <span className="font-body text-sm font-semibold text-foreground">KES {product.price}</span>
                   )}
                 </div>
               </Link>

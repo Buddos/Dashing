@@ -267,7 +267,7 @@ export default function AdminProducts() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-sm font-medium text-foreground">Price *</label>
+                <label className="text-sm font-medium text-foreground">Price (KES) *</label>
                 <Input
                   type="number"
                   step="0.01"
@@ -276,7 +276,7 @@ export default function AdminProducts() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground">Sale Price</label>
+                <label className="text-sm font-medium text-foreground">Sale Price (KES)</label>
                 <Input
                   type="number"
                   step="0.01"

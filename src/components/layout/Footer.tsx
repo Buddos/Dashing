@@ -75,7 +75,12 @@ const Footer = () => {
                 placeholder="Your email"
                 className="flex-1 bg-primary-foreground/10 border border-primary-foreground/20 px-4 py-2.5 text-sm font-body text-primary-foreground placeholder:text-primary-foreground/40 rounded-l-sm focus:outline-none focus:border-accent"
               />
-              <button className="bg-accent text-accent-foreground px-5 py-2.5 text-sm font-body font-semibold uppercase tracking-wide rounded-r-sm hover:opacity-90 transition-opacity">
+              <button 
+                onClick={() => {
+                  import("sonner").then(({ toast }) => toast.success("Subscribed successfully!"));
+                }}
+                className="bg-accent text-accent-foreground px-5 py-2.5 text-sm font-body font-semibold uppercase tracking-wide rounded-r-sm hover:opacity-90 transition-opacity"
+              >
                 Join
               </button>
             </div>
