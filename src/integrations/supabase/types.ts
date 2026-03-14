@@ -365,6 +365,35 @@ export type Database = {
           },
         ]
       }
+      seller_products: {
+        Row: {
+          created_at: string
+          id: string
+          product_id: number
+          seller_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          product_id: number
+          seller_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          product_id?: number
+          seller_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "seller_products_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       team_members: {
         Row: {
           bio: string | null
@@ -462,7 +491,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "user"
+      app_role: "admin" | "user" | "seller"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -590,7 +619,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "user"],
+      app_role: ["admin", "user", "seller"],
     },
   },
 } as const
