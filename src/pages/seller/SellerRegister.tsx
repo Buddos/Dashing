@@ -6,7 +6,7 @@ import { Store } from "lucide-react";
 export default function SellerRegister() {
   const { signUp } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "", full_name: "", confirm: "" });
+   const [form, setForm] = useState({ email: "", password: "", full_name: "", confirm: "", shop_description: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ export default function SellerRegister() {
     e.preventDefault();
     if (form.password !== form.confirm) { setError("Passwords do not match"); return; }
     setError(""); setLoading(true);
-    const { error: err } = await signUp(form.email, form.password, form.full_name);
+    const { error: err } = await signUp(form.email, form.password, form.full_name, form.shop_description);
     setLoading(false);
     if (err) { setError(err.message ?? "Registration failed"); return; }
     navigate("/seller");
@@ -23,8 +23,19 @@ export default function SellerRegister() {
   const f = (key: keyof typeof form, label: string, type = "text") => (
     <div key={key}>
       <label className="text-sm font-medium text-foreground">{label}</label>
-      <input type={type} value={form[key]} onChange={e => setForm(p => ({ ...p, [key]: e.target.value }))} required
-        className="w-full mt-1 border border-border rounded-lg px-3 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+      {key === "shop_description" ? (
+        <textarea
+          value={form[key]} 
+          onChange={e => setForm(p => ({ ...p, [key]: e.target.value }))} 
+          required
+          rows={3}
+          className="w-full mt-1 border border-border rounded-lg px-3 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+          placeholder="Describe what you'll be selling..."
+        />
+      ) : (
+        <input type={type} value={form[key]} onChange={e => setForm(p => ({ ...p, [key]: e.target.value }))} required
+          className="w-full mt-1 border border-border rounded-lg px-3 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+      )}
     </div>
   );
 
@@ -44,6 +55,7 @@ export default function SellerRegister() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {f("full_name", "Full Name")}
           {f("email", "Email", "email")}
+          {f("shop_description", "Shop Description")}
           {f("password", "Password", "password")}
           {f("confirm", "Confirm Password", "password")}
           <button type="submit" disabled={loading}

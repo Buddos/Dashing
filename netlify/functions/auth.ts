@@ -40,7 +40,7 @@ export const handler = async (
   try {
     // ── REGISTER ────────────────────────────────────────────────────────────
     if (event.httpMethod === "POST" && route === "/register") {
-      const { email, password, full_name } = JSON.parse(event.body ?? "{}");
+      const { email, password, full_name, shop_description } = JSON.parse(event.body ?? "{}");
       if (!email || !password) {
         return makeResponse(400, { error: "Email and password required" });
       }
@@ -52,8 +52,8 @@ export const handler = async (
 
       const passwordHash = await bcrypt.hash(password, 10);
       const rows = await sql`
-        INSERT INTO public.profiles (email, password_hash, full_name)
-        VALUES (${email}, ${passwordHash}, ${full_name ?? ""})
+        INSERT INTO public.profiles (email, password_hash, full_name, description)
+        VALUES (${email}, ${passwordHash}, ${full_name ?? ""}, ${shop_description ?? ""})
         RETURNING id, email, full_name, avatar_url, created_at
       `;
       const user = rows[0];

@@ -13,7 +13,7 @@ interface AuthContextType {
   role: string | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: { message: string } | null }>;
-  signUp: (email: string, password: string, full_name?: string) => Promise<{ error: { message: string } | null }>;
+  signUp: (email: string, password: string, full_name?: string, shop_description?: string) => Promise<{ error: { message: string } | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -84,12 +84,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const signUp = async (email: string, password: string, full_name?: string) => {
+  const signUp = async (email: string, password: string, full_name?: string, shop_description?: string) => {
     try {
       const res = await fetch("/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, full_name }),
+        body: JSON.stringify({ email, password, full_name, shop_description }),
       });
       const data = await res.json();
       if (!res.ok) return { error: { message: data.error || "Registration failed" } };
