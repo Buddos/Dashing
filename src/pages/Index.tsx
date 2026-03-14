@@ -57,11 +57,7 @@ const Index = () => {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-<<<<<<< HEAD
               { icon: Truck, label: "Free Shipping", desc: "On orders over KES 100" },
-=======
-              { icon: Truck, label: "Free Shipping", desc: "On orders over $100" },
->>>>>>> d8ee225b34a77d6534bba2b79f64a8693526ab7b
               { icon: Shield, label: "Secure Payment", desc: "100% protected" },
               { icon: RotateCcw, label: "Easy Returns", desc: "30-day returns" },
               { icon: Star, label: "Premium Quality", desc: "Curated selection" },

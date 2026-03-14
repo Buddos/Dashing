@@ -114,11 +114,7 @@ const ProductDetail = () => {
             {/* Features */}
             <div className="grid grid-cols-3 gap-4 border-t border-border pt-6">
               {[
-<<<<<<< HEAD
                 { icon: Truck, label: "Free Shipping", desc: "Over KES 100" },
-=======
-                { icon: Truck, label: "Free Shipping", desc: "Over $100" },
->>>>>>> d8ee225b34a77d6534bba2b79f64a8693526ab7b
                 { icon: RotateCcw, label: "Easy Returns", desc: "30 days" },
                 { icon: Shield, label: "Secure", desc: "Payment" },
               ].map(({ icon: Icon, label, desc }) => (

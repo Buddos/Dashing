@@ -365,8 +365,6 @@ export type Database = {
           },
         ]
       }
-<<<<<<< HEAD
-=======
       seller_products: {
         Row: {
           created_at: string
@@ -396,7 +394,7 @@ export type Database = {
           },
         ]
       }
->>>>>>> d8ee225b34a77d6534bba2b79f64a8693526ab7b
+
       team_members: {
         Row: {
           bio: string | null
@@ -494,11 +492,7 @@ export type Database = {
       }
     }
     Enums: {
-<<<<<<< HEAD
-      app_role: "admin" | "user"
-=======
       app_role: "admin" | "user" | "seller"
->>>>>>> d8ee225b34a77d6534bba2b79f64a8693526ab7b
     }
     CompositeTypes: {
       [_ in never]: never
@@ -626,11 +620,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-<<<<<<< HEAD
-      app_role: ["admin", "user"],
-=======
       app_role: ["admin", "user", "seller"],
->>>>>>> d8ee225b34a77d6534bba2b79f64a8693526ab7b
     },
   },
 } as const
