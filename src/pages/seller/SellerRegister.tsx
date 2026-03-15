@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 import { Store } from "lucide-react";
 
 export default function SellerRegister() {
   const { signUp } = useAuth();
   const navigate = useNavigate();
-   const [form, setForm] = useState({ email: "", password: "", full_name: "", confirm: "", shop_description: "" });
+  const [form, setForm] = useState({ email: "", password: "", full_name: "", confirm: "", shop_description: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,9 +15,20 @@ export default function SellerRegister() {
     e.preventDefault();
     if (form.password !== form.confirm) { setError("Passwords do not match"); return; }
     setError(""); setLoading(true);
+
     const { error: err } = await signUp(form.email, form.password, form.full_name, form.shop_description);
+    if (err) { setError(err.message ?? "Registration failed"); setLoading(false); return; }
+
+    // Wait for session to be established, then assign seller role
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      await supabase.from("user_roles").insert({
+        user_id: session.user.id,
+        role: "seller" as const,
+      });
+    }
+
     setLoading(false);
-    if (err) { setError(err.message ?? "Registration failed"); return; }
     navigate("/seller");
   };
 
